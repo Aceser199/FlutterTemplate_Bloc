@@ -38,6 +38,15 @@ dependencies:
   provider: ^6.0.5
   http: ^0.13.5
   rxdart: ^0.27.7
+  bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
+  i_todo_api:
+    path: packages/i_todo_api
+  local_todo_api:
+    path: packages/local_todo_api
+  todo_repository:
+    path: packages/todo_repository
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

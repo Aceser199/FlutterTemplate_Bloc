@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_temp/providers/to_dos.dart';
-import 'package:flutter_temp/screens/home_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:local_todo_api/local_todo_api.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'src/bootstrap.dart';
+import 'src/settings/settings_controller.dart';
+import 'src/settings/settings_service.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Set up the SettingsController, which will glue user settings to multiple
+  // Flutter Widgets.
+  final settingsController = SettingsController(SettingsService());
 
-  @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => ToDos(),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Flutter Template',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const HomeScreen(),
-      ),
-    );
-  }
+  // Load the user's preferred theme while the splash screen is displayed.
+  // This prevents a sudden theme change when the app is first displayed.
+  await settingsController.loadSettings();
+
+  final todosApi = LocalTodoApi(
+    plugin: await SharedPreferences.getInstance(),
+  );
+
+  // final schoolsApi = SchoolService();
+
+  bootstrap(
+    todosApi: todosApi,
+    settingsController: settingsController,
+  );
 }
