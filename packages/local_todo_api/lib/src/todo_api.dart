@@ -34,7 +34,28 @@ class LocalTodoApi extends ITodoApi {
       _plugin.setString(key, value);
 
   void _init() {
-    fetchTodos();
+    // _plugin.remove(_kTodosCollectionKey);
+    final todosJson = _getValue(_kTodosCollectionKey);
+    if (todosJson != null) {
+      // final mapList = json.decode(todosJson) as List<dynamic>;
+      // print(mapList);
+      // final todos = mapList.forEach((element) {
+      //   print(json.decode(element));
+      //   print(Todo.fromMap(Map<String, dynamic>.from(json.decode(element))));
+      // });
+      // final todos = mapList.map((dynamic e) => ).toList();
+      // final todos = mapList
+      //     .map((jsonM) => Todo.fromMap(Map<String, dynamic>.from(jsonM)))
+      //     .toList();
+      final todos = List<Map<String, dynamic>>.from(
+        json.decode(todosJson) as List,
+      )
+          .map((jsonM) => Todo.fromJson(Map<String, dynamic>.from(jsonM)))
+          .toList();
+      _todoStreamController.add(todos);
+    } else {
+      _todoStreamController.add(const []);
+    }
   }
 
   @override
@@ -79,15 +100,9 @@ class LocalTodoApi extends ITodoApi {
 
   @override
   Future<void> fetchTodos() async {
+    // _plugin.remove(_kTodosCollectionKey);
+
     await Future<void>.delayed(const Duration(milliseconds: 100));
-    final todosJson = _getValue(_kTodosCollectionKey);
-    if (todosJson != null) {
-      final todos = List<Map<dynamic, dynamic>>.from(
-        json.decode(todosJson) as List,
-      ).map((jsonM) => Todo.fromMap(Map<String, dynamic>.from(jsonM))).toList();
-      _todoStreamController.add(todos);
-    } else {
-      _todoStreamController.add(const []);
-    }
+    _init();
   }
 }

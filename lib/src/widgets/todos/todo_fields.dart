@@ -8,7 +8,7 @@ import '../shared/loading_container_field.dart';
 
 Widget titleField(BuildContext context) {
   return BlocBuilder<TodoDetailsBloc, TodoDetailsState>(
-    buildWhen: (previous, current) => previous.title != current.title,
+    // buildWhen: (previous, current) => previous.title != current.title,
     builder: (context, state) {
       if (state.status == TodoDetailsStatus.loading) {
         return const LoadingContainerField();
@@ -39,8 +39,8 @@ Widget titleField(BuildContext context) {
 
 Widget descriptionField(BuildContext context) {
   return BlocBuilder<TodoDetailsBloc, TodoDetailsState>(
-    buildWhen: (previous, current) =>
-        previous.description != current.description,
+    // buildWhen: (previous, current) =>
+    //     previous.description != current.description,
     builder: (context, state) {
       if (state.status == TodoDetailsStatus.loading) {
         return const LoadingContainerField();
@@ -56,7 +56,7 @@ Widget descriptionField(BuildContext context) {
         ),
         onChanged: (value) {
           context.read<TodoDetailsBloc>().add(
-                ChangeTitleTodoDetailsEvent(title: value),
+                ChangeDescriptionTodoDetailsEvent(description: value),
               );
         },
         // validator: (value) {
@@ -71,7 +71,7 @@ Widget descriptionField(BuildContext context) {
 
 Widget dueDateField(context) {
   return BlocBuilder<TodoDetailsBloc, TodoDetailsState>(
-    buildWhen: (previous, current) => previous.dueDate != current.dueDate,
+    // buildWhen: (previous, current) => previous.dueDate != current.dueDate,
     builder: (context, state) {
       if (state.status == TodoDetailsStatus.loading) {
         return const LoadingContainerField();
@@ -96,7 +96,7 @@ Widget dueDateField(context) {
             if (value != null) {
               context.read<TodoDetailsBloc>().add(
                     ChangeDueDateTodoDetailsEvent(
-                      dueDate: DateFormat('yyyy-MM-dd').format(value!),
+                      dueDate: DateFormat('yyyy-MM-dd').format(value),
                     ),
                   );
             }
@@ -109,7 +109,7 @@ Widget dueDateField(context) {
 
 Widget completedField(BuildContext context) {
   return BlocBuilder<TodoDetailsBloc, TodoDetailsState>(
-    buildWhen: (previous, current) => previous.isDone != current.isDone,
+    // buildWhen: (previous, current) => previous.isDone != current.isDone,
     builder: (context, state) {
       if (state.status == TodoDetailsStatus.loading) {
         return const LoadingContainerField();

@@ -42,7 +42,7 @@ class Todo extends Equatable {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'title': title,
@@ -53,7 +53,7 @@ class Todo extends Equatable {
     };
   }
 
-  factory Todo.fromMap(Map<String, dynamic> map) {
+  factory Todo.fromJson(Map<String, dynamic> map) {
     return Todo(
       id: map['id'] ?? '',
       title: map['title'] ?? '',
@@ -64,9 +64,9 @@ class Todo extends Equatable {
     );
   }
 
-  String toJson() => json.encode(toMap());
+  // String toJson() => json.encode(toMap());
 
-  factory Todo.fromJson(String source) => Todo.fromMap(json.decode(source));
+  // factory Todo.fromJson(String source) => Todo.fromMap(json.decode(source));
 
   @override
   String toString() {
