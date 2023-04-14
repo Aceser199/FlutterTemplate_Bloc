@@ -40,4 +40,24 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
       emit(state.copyWith(status: TodoListStatus.error));
     }
   }
+
+  // Future<void> _onDeleteRequested(
+  //   DeleteGroupRequested event,
+  //   Emitter<GroupListState> emit,
+  // ) async {
+  //   emit(state.copyWith(status: TodoListStatus.loading));
+  //   try {
+  //     await _groupsRepository.deleteGroup(event.id);
+
+  //     await emit.forEach(
+  //       _groupsRepository.getGroups(),
+  //       onData: (groups) => state.copyWith(
+  //         groups: groups,
+  //         status: TodoListStatus.deleted,
+  //       ),
+  //     );
+  //   } catch (e) {
+  //     emit(state.copyWith(status: TodoListStatus.error));
+  //   }
+  // }
 }

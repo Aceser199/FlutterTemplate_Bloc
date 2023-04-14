@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_temp/src/screens/home/desktop_home_body.dart';
-import 'package:flutter_temp/src/screens/home/mobile_home_body.dart';
-import 'package:flutter_temp/src/screens/home/tablet_home_body.dart';
+import 'package:flutter_temp/src/screens/todo/desktop_home_body.dart';
+import 'package:flutter_temp/src/screens/todo/mobile_home_body.dart';
+import 'package:flutter_temp/src/screens/todo/tablet_home_body.dart';
 import 'package:flutter_temp/src/widgets/responsive/responsive_layout.dart';
 
 class HomeScreen extends StatelessWidget {

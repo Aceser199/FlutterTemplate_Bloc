@@ -10,23 +10,18 @@ class TodoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: AddTodo(),
-        ),
-        Expanded(
-            child: ListView.separated(
-          itemBuilder: (context, index) {
-            final todo = context.watch<TodoListBloc>().state.todos[index];
+    return context.watch<TodoListBloc>().state.todos.isEmpty
+        ? const Center(
+            child: Text('No todos yet'),
+          )
+        : ListView.separated(
+            itemBuilder: (context, index) {
+              final todo = context.watch<TodoListBloc>().state.todos[index];
 
-            return TodoCard(todo: todo);
-          },
-          separatorBuilder: (context, index) => const Divider(),
-          itemCount: context.watch<TodoListBloc>().state.todos.length,
-        ))
-      ],
-    );
+              return TodoCard(todo: todo);
+            },
+            separatorBuilder: (context, index) => const Divider(),
+            itemCount: context.watch<TodoListBloc>().state.todos.length,
+          );
   }
 }

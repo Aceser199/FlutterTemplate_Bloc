@@ -8,7 +8,7 @@ import 'package:todo_repository/todo_repository.dart';
 
 import 'app/app.dart';
 import 'app/app_bloc_observer.dart';
-import 'settings/settings_controller.dart';
+import 'screens/settings/settings_controller.dart';
 
 void bootstrap({
   required ITodoApi todosApi,

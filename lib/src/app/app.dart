@@ -4,7 +4,7 @@ import 'package:todo_repository/todo_repository.dart';
 
 import '../blocs/todo/todo_list/todo_list_bloc.dart';
 import '../routes.dart';
-import '../settings/settings_controller.dart';
+import '../screens/settings/settings_controller.dart';
 import '../theme/theme.dart';
 
 class App extends StatelessWidget {

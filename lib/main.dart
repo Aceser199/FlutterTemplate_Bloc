@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:local_todo_api/local_todo_api.dart';
 
 import 'src/bootstrap.dart';
-import 'src/settings/settings_controller.dart';
-import 'src/settings/settings_service.dart';
+import 'src/screens/settings/settings_controller.dart';
+import 'src/screens/settings/settings_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

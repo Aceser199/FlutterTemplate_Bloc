@@ -8,8 +8,9 @@ class TodoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(todo.value),
-      trailing: Text(todo.date),
+      title: Text(todo.title),
+      trailing: Text(todo.dueDate),
+      subtitle: Text(todo.description),
     );
   }
 }
